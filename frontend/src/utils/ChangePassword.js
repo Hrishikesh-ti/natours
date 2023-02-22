@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useRef } from 'react';
-import { json, redirect } from 'react-router-dom';
+import { json } from 'react-router-dom';
 
 function ChangePassword() {
   const ref = useRef();
@@ -19,8 +19,7 @@ function ChangePassword() {
       withCredentials: true,
     };
     try {
-      const res = await axios(configuration);
-      console.log(res);
+      await axios(configuration);
     } catch (error) {
       const { response } = error;
       throw json(

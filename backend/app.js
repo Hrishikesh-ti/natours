@@ -9,6 +9,7 @@ const hpp = require('hpp');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookie_parser = require('cookie-parser');
+const compression = require('compression');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -23,7 +24,7 @@ app.use(cookie_parser('1234'));
 
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Origin', 'http:/localhost:3000');
+  res.header('Access-Control-Allow-Origin', true);
   res.header(
     'Access-Control-Allow-Methods',
     'GET,PUT,POST,DELETE,UPDATE,OPTIONS'
@@ -35,7 +36,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+app.use(cors({ credentials: true, origin: true }));
 
 // 1) GLOBAL MIDDLEWARES
 
@@ -80,6 +81,8 @@ app.use(
     ],
   })
 );
+
+app.use(compression());
 
 // Test middleware
 app.use((req, res, next) => {

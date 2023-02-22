@@ -1,8 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import AccountPage, {
-  loader as userDataLoader,
-  action as updateAction,
-} from './pages/Account';
+import AccountPage, { loader as userDataLoader } from './pages/Account';
 import ErrorPage from './pages/Error';
 import HomePage, { loader as toursLoader } from './pages/Home';
 import LoginPage, { action as loginAction } from './pages/Login';
@@ -35,7 +32,6 @@ const router = createBrowserRouter([
         path: 'me',
         element: <AccountPage />,
         loader: userDataLoader,
-        action: updateAction,
       },
     ],
   },

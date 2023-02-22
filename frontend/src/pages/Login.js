@@ -25,7 +25,6 @@ function LoginPage() {
                 name="email"
                 placeholder="you@example.com"
                 required="required"
-                defaultValue="admin@natours.io"
               />
             </div>
             <div className="form__group ma-bt-md">
@@ -40,7 +39,6 @@ function LoginPage() {
                 placeholder="••••••••"
                 required="required"
                 minLength="8"
-                defaultValue="12345678"
               />
             </div>
 
@@ -84,7 +82,6 @@ export async function action({ request }) {
 
     return redirect('/');
   } catch (error) {
-    console.log(error);
     return redirect('/login');
   }
 }

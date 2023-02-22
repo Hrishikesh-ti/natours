@@ -8,7 +8,7 @@ function StoreUser( user ) {
     };
     localStorage.setItem('user', JSON.stringify(userData));
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }
 

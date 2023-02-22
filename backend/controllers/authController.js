@@ -5,7 +5,6 @@ const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const sendEmail = require('../utils/email');
-const { stringify } = require('querystring');
 const Email = require('../utils/email');
 
 const signToken = (id) => {
@@ -38,7 +37,7 @@ const createSendToken = (user, statusCode, res) => {
       },
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -49,7 +48,6 @@ exports.logout = (req, res, next) => {
       status: 'success',
     });
   } catch (error) {
-    console.log(error);
     return next(
       new AppError(
         'Something went wrong while logging out! Please try again.',
@@ -71,12 +69,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 
   //send welcome email to user's email address
   const url = `${req.protocol}://${req.get('host')}/me`;
-  // try {
-    await new Email(newUser, url).sendWelcome();
-  // } catch (error) {
-  //   console.log(error);
-  //   return next();
-  // }
+  await new Email(newUser, url).sendWelcome();
 
   createSendToken(newUser, 201, res);
 });

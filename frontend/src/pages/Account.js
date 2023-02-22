@@ -30,7 +30,6 @@ function AccountPage() {
       const res = await axios(configuration);
       const { user } = res.data;
       if (user.photo) {
-        console.log(user.photo);
         setImgFile(`/img/users/${user.photo}`);
       }
       setShowSuccess(true);
@@ -39,12 +38,11 @@ function AccountPage() {
         setShowSuccess(false);
       }, 5000);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 
   function changeImageHandler(event) {
-    console.log(event.target.files[0]);
     changeImage(event.target.files[0]);
   }
 
@@ -98,12 +96,7 @@ function AccountPage() {
                   />
                 </div>
                 <div className="form__group form__photo-upload">
-                  <img
-                    className="form__user-photo"
-                    src={imgFile}
-                    // src={`/img/users/${photo}`}
-                    alt="User"
-                  />
+                  <img className="form__user-photo" src={imgFile} alt="User" />
                   <input
                     className="form__upload"
                     type="file"
@@ -136,7 +129,6 @@ export default AccountPage;
 export function loader() {
   const cookie = document.cookie;
   if (!cookie) return redirect('/login');
-  // if (!cookie) return { name: null, email: null, photo: null, role: null };
   const storedUserData = JSON.parse(localStorage.getItem('user'));
   const userData = {
     name: storedUserData.name,
@@ -146,33 +138,4 @@ export function loader() {
   };
 
   return userData;
-}
-
-export async function action({ request }) {
-  // const data = await request.formData();
-  const data2 = Object.fromEntries(await request.formData());
-  console.log(request);
-  console.log(data2);
-  return null;
-  // const userData = {
-  //   name: data.get('name'),
-  //   email: data.get('email'),
-  //   photo: data.get('photo'),
-  // };
-  // console.log(userData.photo);
-  // const configuration = {
-  //   method: 'patch',
-  //   url: 'http://localhost:5001/updateMe',
-  //   data: userData,
-  //   withCredentials: true,
-  // };
-  // try {
-  //   const res = await axios(configuration);
-  //   const { user } = res.data;
-  //   console.log(user);
-  //   StoreUser(user);
-  // } catch (error) {
-  //   console.log(error);
-  // }
-  // return redirect('/');
 }

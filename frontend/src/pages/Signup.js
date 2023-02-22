@@ -27,7 +27,6 @@ function SignupPage() {
               placeholder="hari das"
               required="required"
               name="name"
-              defaultValue="hari"
             />
           </div>
 
@@ -42,7 +41,6 @@ function SignupPage() {
               placeholder="you@example.com"
               required="required"
               name="email"
-              defaultValue="user1@natours.io"
             />
           </div>
           <div className="form__group ma-bt-md">
@@ -57,7 +55,6 @@ function SignupPage() {
               required="required"
               name="password"
               minLength="8"
-              defaultValue="12345678"
             />
           </div>
           <div className="form__group ma-bt-md">
@@ -72,7 +69,6 @@ function SignupPage() {
               required="required"
               name="confirmPassword"
               minLength="8"
-              defaultValue="12345678"
             />
           </div>
           {user && user.status && (
