@@ -22,7 +22,7 @@ function AccountPage() {
 
     const configuration = {
       method: 'patch',
-      url: 'http://localhost:5001/updateMe',
+      url: 'https://natours-api-1zra.onrender.com/updateMe',
       data: userData,
       withCredentials: true,
     };

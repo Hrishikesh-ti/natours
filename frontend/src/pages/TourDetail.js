@@ -20,7 +20,7 @@ function TourDetailPage() {
 
 async function loadTour(id) {
   try {
-    const response = await axios.get('http://localhost:5001/tour/' + id, {
+    const response = await axios.get('https://natours-api-1zra.onrender.com/tour/' + id, {
       withCredentials: true,
     });
     const { tour } = response.data;

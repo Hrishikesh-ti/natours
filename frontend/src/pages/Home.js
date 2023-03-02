@@ -29,7 +29,7 @@ export default ToursPage;
 
 async function loadTours() {
   try {
-    const response = await axios.get('http://localhost:5001/');
+    const response = await axios.get('https://natours-api-1zra.onrender.com/');
     const { tours } = response.data;
 
     return tours;

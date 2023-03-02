@@ -4,7 +4,7 @@ import { json, redirect } from 'react-router-dom';
 export async function loader() {
   const configuration = {
     method: 'post',
-    url: 'http://localhost:5001/logout',
+    url: 'https://natours-api-1zra.onrender.com/logout',
     withCredentials: true,
   };
 

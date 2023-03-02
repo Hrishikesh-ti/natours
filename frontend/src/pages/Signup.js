@@ -113,7 +113,7 @@ export async function action({ request }) {
 
   const configuration = {
     method: 'post',
-    url: 'http://localhost:5001/signup',
+    url: 'https://natours-api-1zra.onrender.com/signup',
     data: authData,
     withCredentials: true,
   };
