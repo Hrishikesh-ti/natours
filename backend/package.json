@@ -5,8 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon server.js",
-    "start:prod": "NODE_ENV=production nodemon server.js",
-    "debug": "ndb server.js"
+    "start:prod": "NODE_ENV=production node server.js",
+    "debug": "ndb server.js",
+    "build":"npm i"
   },
   "author": "hariDas",
   "license": "ISC",
