@@ -58,21 +58,26 @@ exports.logout = (req, res, next) => {
   res.end();
 };
 
-exports.signup = catchAsync(async (req, res, next) => {
-  const newUser = await User.create({
-    name: req.body.name,
-    email: req.body.email,
-    role: req.body.role,
-    password: req.body.password,
-    passwordConfirm: req.body.passwordConfirm,
-  });
+exports.signup = async (req, res, next) => {
+  try {
+    const newUser = await User.create({
+      name: req.body.name,
+      email: req.body.email,
+      role: req.body.role,
+      password: req.body.password,
+      passwordConfirm: req.body.passwordConfirm,
+    });
 
-  //send welcome email to user's email address
-  const url = `${req.protocol}://${req.get('host')}/me`;
-  await new Email(newUser, url).sendWelcome();
+    //send welcome email to user's email address
+    const url = `${req.protocol}://${req.get('host')}/me`;
+    await new Email(newUser, url).sendWelcome();
 
-  createSendToken(newUser, 201, res);
-});
+    createSendToken(newUser, 201, res);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error });
+  }
+};
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
