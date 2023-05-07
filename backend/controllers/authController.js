@@ -69,8 +69,8 @@ exports.signup = async (req, res, next) => {
     });
 
     //send welcome email to user's email address
-    const url = `${req.protocol}://${req.get('host')}/me`;
-    await new Email(newUser, url).sendWelcome();
+    // const url = `${req.protocol}://${req.get('host')}/me`;
+    // await new Email(newUser, url).sendWelcome();
 
     createSendToken(newUser, 201, res);
   } catch (error) {
@@ -83,9 +83,9 @@ exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
   // 1) Check if email and password exist
-  if (!email || !password) {
-    return next(new AppError('Please provide email and password!', 400));
-  }
+  // if (!email || !password) {
+  //   return next(new AppError('Please provide email and password!', 400));
+  // }
   // 2) Check if user exists && password is correct
   const user = await User.findOne({ email }).select('+password');
 
