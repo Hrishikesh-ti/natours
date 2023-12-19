@@ -113,7 +113,7 @@ export async function action({ request }) {
 
   const configuration = {
     method: 'post',
-    url: 'https://natours-ten-eta.vercel.app/signup',
+    url: 'https://natours-api-1zra.onrender.com/signup',
     data: authData,
     withCredentials: true,
   };
