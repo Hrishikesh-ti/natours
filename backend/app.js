@@ -43,7 +43,7 @@ app.use(
     credentials: true,
   })
 );
-app.options("*", cors());
+app.options('*', cors());
 
 // 1) GLOBAL MIDDLEWARES
 
