@@ -39,7 +39,7 @@ app.use(cookie_parser('1234'));
 // app.use(cors({ credentials: true, origin: true }));
 app.use(
   cors({
-    origin: 'https://natours-ten-eta.vercel.app/',
+    origin: ['https://natours-ten-eta.vercel.app/'],
     credentials: true,
   })
 );
