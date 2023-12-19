@@ -22,21 +22,28 @@ const app = express();
 
 app.use(cookie_parser('1234'));
 
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Origin', true);
-  res.header(
-    'Access-Control-Allow-Methods',
-    'GET,PUT,POST,DELETE,UPDATE,OPTIONS'
-  );
-  res.header(
-    'Access-Control-Allow-Headers',
-    'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept'
-  );
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.header('Access-Control-Allow-Credentials', true);
+//   res.header('Access-Control-Allow-Origin', true);
+//   res.header(
+//     'Access-Control-Allow-Methods',
+//     'GET,PUT,POST,DELETE,UPDATE,OPTIONS'
+//   );
+//   res.header(
+//     'Access-Control-Allow-Headers',
+//     'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept'
+//   );
+//   next();
+// });
 
-app.use(cors({ credentials: true, origin: true }));
+// app.use(cors({ credentials: true, origin: true }));
+app.use(
+  cors({
+    origin: 'https://natours-ten-eta.vercel.app/',
+    credentials: true,
+  })
+);
+app.options("*", cors());
 
 // 1) GLOBAL MIDDLEWARES
 
